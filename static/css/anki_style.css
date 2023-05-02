@@ -149,6 +149,8 @@ h1 {
 
 .popup input[type="submit"],
 .popup button[type="button"] {
+  display: flex;
+  justify-content: center;
   width: 150px;
   padding: 15px;
   border: none;
@@ -170,6 +172,7 @@ h1 {
 .popup button[type="button"]:hover {
   background-color: #F4F4F4;
   color: #171717;
+
 }
 
 .container {
@@ -262,12 +265,15 @@ h1 {
   font-size: 20px;
   color: #171717;
   font-weight: bold;
+  text-transform: lowercase;
+
 }
 
 .card-set {
   align-items: left;
   margin-bottom: 30px;
   text-align: center;
+  text-transform: lowercase;
 }
 
 .card-set__name {
@@ -276,18 +282,21 @@ h1 {
 margin-bottom: 15px;
 text-transform: uppercase;
 letter-spacing: 2px;
+
 }
 
 .card-set__list {
 list-style: none;
 margin: 0;
 padding: 0;
+text-transform: lowercase;
 }
 
 .card-set__item {
 margin-bottom: 10px;
 font-size: 18px;
 line-height: 1.5;
+
 }
 
 .button_set_anki{
@@ -310,6 +319,7 @@ line-height: 1.5;
   cursor: pointer;
   transition: all 0.3s ease;
   margin-top: 20px;
+
 
 }
 
@@ -343,9 +353,7 @@ select {
 
 .form-container {
   display: flex;
+  width: 80%;
   justify-content: center;
 }
 
-form {
-  width: 50%;
-}

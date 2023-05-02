@@ -25,5 +25,4 @@ urlpatterns = [
     path('start_learning/', start_learning, name='start_learning'),
     path('set_of_card/', set_of_card, name='set_of_card'),
     path('create_card_set/', create_card_set, name='create_card_set'),
-    #path('card_set_created/', card_set_created, name='card_set_created')
 ]

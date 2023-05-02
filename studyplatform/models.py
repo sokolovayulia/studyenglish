@@ -33,7 +33,4 @@ class CardsSet(models.Model):
     def __str__(self):
         return self.set_name
 
-#class CardToSet(models.Model):
-    #sets = ForeignKey(CardsSet, on_delete=models.CASCADE, related_name="card_set")
 
-    #   user_id = models.ManyToOneRel('Users')
