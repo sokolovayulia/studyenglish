@@ -15,7 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from studyplatform.views import anki_card_list, create_anki_card, anki_card_created, start_learning
 
 urlpatterns = [
+    path('ankicards/', anki_card_list, name='anki_card_list'),
+    path('create_anki_card/', create_anki_card, name='create_anki_card'),
     path('admin/', admin.site.urls),
+    path('anki_card_created/', anki_card_created, name='anki_card_created'),
+    path('start_learning/', start_learning, name='start_learning')
 ]

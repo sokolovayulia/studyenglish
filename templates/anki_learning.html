@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="anki-container">
+        {% for card in cards %}
+            <div class="card" style="text-align: center;">
+                <img src="{{ card.image }}" alt="{{ card.image.name }}" style="width: 100%;max-width: 300px;border-radius: 5%">
+                <div class="front_side">{{ card.front_side }}</div>
+                <div class="back_side" style="display: none;">{{ card.back_side }}</div>
+                <button class="flip-btn">Перевернуть карточку</button>
+                <br>
+            </div>
+        {% endfor %}
+
+    </div>
+{% endblock %}
+

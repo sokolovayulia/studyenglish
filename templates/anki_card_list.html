@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Список Anki карточек</h1>
+    <table class="anki-table">
+        <thead>
+            <tr>
+                <th class="anki-table-header"></th>
+                <th class="anki-table-header">Front Side</th>
+                <th class="anki-table-header">Back Side</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for card in cards %}
+            <tr>
+                <td class="anki-table-data">
+                        <img src="{{ card.image }}" alt="{{ card.image.name }}" style="width: 100%;max-width: 100px; border-radius: 5%">
+                    </td>
+                <td class="anki-table-data">{{ card.front_side }}</td>
+                <td class="anki-table-data">{{ card.back_side }}</td>
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
