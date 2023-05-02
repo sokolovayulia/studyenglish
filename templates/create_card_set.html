@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="form-container">
+
+    <form method="post" action="{% url 'create_card_set' %}">
+        <h2>Создать сет Anki</h2>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Создать" class="button">
+    </form>
+    </div>
+{% endblock %}

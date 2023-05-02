@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<a href="{% url 'create_card_set' %}" class="button_set_anki">Создать Сет Anki</a>
+{% for set in sets.all %}
+    <div class="card-set">
+        <h2 class="card-set__name">{{ set.set_name }}</h2>
+        <ul class="card-set__list">
+            {% for card in set.cards.all %}
+                <li class="card-set__item">{{ card.front_side }} - {{ card.back_side }}</li>
+            {% endfor %}
+        </ul>
+        </div>
+{% endfor %}
+
+
+{% endblock %}

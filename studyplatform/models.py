@@ -8,6 +8,10 @@ class AnkiCardManager(models.Manager):
     pass
 
 
+class CardsSetManager(models.Manager):
+    pass
+
+
 class AnkiCard(models.Model):
     anki_id = models.AutoField(primary_key=True)
     #   user_id = models.ManyToOneRel('Users')
@@ -23,13 +27,13 @@ class AnkiCard(models.Model):
 class CardsSet(models.Model):
     cards_set_id = models.AutoField(primary_key=True)
     set_name = models.TextField(default='')
+    objects = CardsSetManager()
+    cards = models.ManyToManyField(AnkiCard)
 
     def __str__(self):
         return self.set_name
 
-
-class CardToSet(models.Model):
-    sets = ForeignKey(CardsSet, on_delete=models.CASCADE)
-    cards = models.ManyToManyField(AnkiCard)
+#class CardToSet(models.Model):
+    #sets = ForeignKey(CardsSet, on_delete=models.CASCADE, related_name="card_set")
 
     #   user_id = models.ManyToOneRel('Users')

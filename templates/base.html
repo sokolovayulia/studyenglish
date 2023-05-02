@@ -28,7 +28,7 @@
                   <input type="text" id="front_side" name="front_side"><br>
                   <label for="back_side">Back Side:</label><br>
                   <input type="text" id="back_side" name="back_side"><br>
-                  <label for="image">Image:</label><br>
+                  <label for="image">Image URL:</label><br>
                   <input type="text" id="image" name="image"><br><br>
                   <!-- Кнопки для сохранения и закрытия формы -->
                   <input type="submit" value="Save">
@@ -36,6 +36,8 @@
               </div>
             </div>
             <a href="{% url 'start_learning' %}" class="button">Начать учить</a>
+            <a href="{% url 'set_of_card' %}" class="button">Сеты Anki</a>
+
         </div>
     </nav>
 
