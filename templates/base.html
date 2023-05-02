@@ -1,0 +1,83 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/anki_style.css' %}">
+    <script src="{% static '/js/popup.js' %}"></script>
+</head>
+<body>
+    <nav>
+        <div class="button-container">
+            <a href="{% url 'anki_card_list' %}" class="button">Главная</a>
+            <button class="add-card-btn" onclick="showPopup()">Создать Anki карточку</button>
+
+            <!-- Всплывающий попап -->
+
+            <div id="popup" class="popup">
+              <div class="popup-content">
+                <span class="close" onclick="hidePopup()">&times;</span>
+                <h2>Add New Card</h2>
+                <!-- Форма добавления карточки -->
+                <form method="post" action="{% url 'create_anki_card' %}">
+                  {% csrf_token %}
+                  <!-- Поля для заполнения -->
+                  <label for="front_side">Front Side:</label><br>
+                  <input type="text" id="front_side" name="front_side"><br>
+                  <label for="back_side">Back Side:</label><br>
+                  <input type="text" id="back_side" name="back_side"><br>
+                  <label for="image">Image URL:</label><br>
+                  <input type="text" id="image" name="image"><br><br>
+                  <!-- Кнопки для сохранения и закрытия формы -->
+                  <input type="submit" value="Save">
+                </form>
+              </div>
+            </div>
+            <a href="{% url 'start_learning' %}" class="button">Начать учить</a>
+            <a href="{% url 'set_of_card' %}" class="button">Сеты Anki</a>
+
+        </div>
+    </nav>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>         © AnkiCards. Yulia Sokolova</p>
+    </footer>
+
+{% block script %}
+    <script>
+        const flipBtns = document.querySelectorAll('.flip-btn');
+        const cards = document.querySelectorAll('.card');
+        let currentCard = 0;
+
+        function flipCard(index) {
+            const card = cards[index];
+            const front_side = card.querySelector('.front_side');
+            const back_side = card.querySelector('.back_side');
+
+            if (front_side.style.display === 'none') {
+                front_side.style.display = 'block';
+                back_side.style.display = 'none';
+            } else {
+                front_side.style.display = 'none';
+                back_side.style.display = 'block';
+            }
+        }
+
+        flipBtns.forEach((flipBtn, index) => {
+            flipBtn.addEventListener('click', () => {
+                flipCard(index);
+            });
+        });
+
+        cards[currentCard].querySelector('.front_side').style.display = 'block';
+    </script>
+{% endblock %}
+
+</body>
+</html>
